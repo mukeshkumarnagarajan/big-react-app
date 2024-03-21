@@ -1,14 +1,16 @@
 import MenuList from "./MenuList";
 
 const Footer: React.FC = () => {
-  const copyRightYear = new Date().getFullYear();
-  const developerName = 'Mukesh';
+  const copyrightYear = new Date().getFullYear();
+  const developerName = "Mukeshkumar Nagarajan";
 
   return (
     <footer className="text-center">
       <hr />
       <MenuList />
-      <p>Copyright {copyRightYear} | {developerName}</p>
+      <p>
+        Copyright {copyrightYear} | {developerName}
+      </p>
     </footer>
   );
 };
