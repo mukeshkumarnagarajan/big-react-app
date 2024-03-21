@@ -1,4 +1,5 @@
-import LatestShow from "./LatestShow/LatestShow";
+import LatestShow from "./LatestShow";
+import TrendingShowList from "./TrendingShowList";
 
 const NetflixPage: React.FC = () => {
   return (
@@ -48,6 +49,10 @@ const NetflixPage: React.FC = () => {
           </LatestShow>
         </div>
       </div>
+
+      <hr />
+      <h2>Trending Shows | Props, States and demo</h2>
+      <TrendingShowList/>
     </div>
   );
 };
