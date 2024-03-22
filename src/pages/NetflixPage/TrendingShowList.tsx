@@ -13,7 +13,7 @@ const TrendingShowList: React.FC = () => {
     <div>
       <div className="row">
         <h3>
-          Enjoy watching the shows in {resolution} | {""}
+          Enjoy watching the shows in {resolution} | {" "}
           <button
             className="btn btn-sm btn-warning"
             onClick={handleSwitchResolution}
