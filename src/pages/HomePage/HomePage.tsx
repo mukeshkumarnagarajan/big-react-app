@@ -1,6 +1,13 @@
+import homeLogo from "../../assets/images/logo-homepage.png";
+
 const HomePage: React.FC = () => {
   return (
     <div className="px-4 py-5 my-5 text-center">
+      <img
+        src={homeLogo}
+        alt="homepage-logo"
+        style={{ width: "400px", height: "200px" }}
+      />
       <h1 className="display-5 fw-bold text-body-emphasis">
         My Big React App!
       </h1>
