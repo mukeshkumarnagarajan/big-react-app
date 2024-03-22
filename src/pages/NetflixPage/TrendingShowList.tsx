@@ -21,7 +21,7 @@ const TrendingShowList: React.FC = () => {
       title: "Superman",
       trendingRank: 2,
       imgUrl:
-        "https://placehold.co/300x220/orange/white?font=raleway&text=Spiderman",
+        "https://placehold.co/300x220/orange/white?font=raleway&text=Superman",
       category: "Action",
       publishedOn: "a few days ago",
       description: "Classic Entertainer",
