@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RecommendedShow from "./RecommendedShow";
 
 interface IShow {
   id: number;
@@ -63,47 +64,24 @@ const RecommendedShowList: React.FC = () => {
     );
   }
 
-  const handleManageWatchlist = (index: number) => {
+  const handleManageWatchlist:Function = (index: number) => {
     const duplicateShows = [...shows];
     duplicateShows[index].isInWatchlist = !duplicateShows[index].isInWatchlist;
     setShows(duplicateShows);
   };
 
   return (
-    <div>
       <div className="row">
-        {/* lists a.k.a looping*/}
-
-        {shows.map((show, index) => {
-          console.log(show);
+        {shows.map((show: IShow, index: number) => {
           return (
-            <div className="col-md-3" key={show.id}>
-              <div className="card">
-                <img src={show.thumbnailUrl} className="card-img-top" alt="" />
-                <div className="card-body">
-                  <h5 className="card-title">{show.title}</h5>
-                  <p className="card-text">{show.description}</p>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">{show.category}</li>
-                  <li className="list-group-item">{show.publishedOn}</li>
-                </ul>
-                <div className="card-body">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      handleManageWatchlist(index);
-                    }}
-                  >
-                    {show.isInWatchlist ? "In Watchlist" : "Add to watchlist"}
-                  </button>
-                </div>
-              </div>
-            </div>
+            <RecommendedShow
+              show={show}
+              index={index}
+              handleManageWatchlist={handleManageWatchlist}
+            ></RecommendedShow>
           );
         })}
       </div>
-    </div>
   );
 };
 

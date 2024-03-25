@@ -61,7 +61,7 @@ const TrendingShowList: React.FC = () => {
             className="btn btn-sm btn-warning"
             onClick={handleSwitchResolution}
           >
-            Switch to 4K
+            Switch to {resolution === "HD" ? "4K" : "HD"}
           </button>
         </h3>
         <div className="col-md-3">
