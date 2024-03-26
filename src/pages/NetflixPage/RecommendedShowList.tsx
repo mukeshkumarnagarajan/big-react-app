@@ -64,24 +64,24 @@ const RecommendedShowList: React.FC = () => {
     );
   }
 
-  const handleManageWatchlist:Function = (index: number) => {
+  const handleManageWatchlist: Function = (index: number) => {
     const duplicateShows = [...shows];
     duplicateShows[index].isInWatchlist = !duplicateShows[index].isInWatchlist;
     setShows(duplicateShows);
   };
 
   return (
-      <div className="row">
-        {shows.map((show: IShow, index: number) => {
-          return (
-            <RecommendedShow
-              show={show}
-              index={index}
-              handleManageWatchlist={handleManageWatchlist}
-            ></RecommendedShow>
-          );
-        })}
-      </div>
+    <div className="row">
+      {shows.map((show: IShow, index: number) => {
+        return (
+          <RecommendedShow
+            show={show}
+            index={index}
+            handleManageWatchlist={handleManageWatchlist}
+          ></RecommendedShow>
+        );
+      })}
+    </div>
   );
 };
 
