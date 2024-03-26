@@ -74,11 +74,13 @@ const RecommendedShowList: React.FC = () => {
     <div className="row">
       {shows.map((show: IShow, index: number) => {
         return (
-          <RecommendedShow
-            show={show}
-            index={index}
-            handleManageWatchlist={handleManageWatchlist}
-          ></RecommendedShow>
+          <div className="col-md-3" key={show.id}>
+            <RecommendedShow
+              show={show}
+              index={index}
+              handleManageWatchlist={handleManageWatchlist}
+            ></RecommendedShow>
+          </div>
         );
       })}
     </div>
