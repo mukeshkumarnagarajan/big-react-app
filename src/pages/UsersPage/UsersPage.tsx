@@ -2,16 +2,16 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { IUser } from "../../models/UserTypes";
 
-interface IUser {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-}
 
 const UsersPage: React.FC = () => {
+  //To store users data
   const [users, setUsers] = useState<IUser[]>([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [isErrorOccured, setIsErrorOccurred] = useState(false);
 
   useEffect(() => {
     // will be called after initial rendering ONLY
@@ -28,11 +28,14 @@ const UsersPage: React.FC = () => {
     axios
       .get<IUser[]>("https://jsonplaceholder.typicode.com/users")
       .then((res: AxiosResponse<IUser[]>) => {
-        console.log(res.data);
         setUsers(res.data);
       })
       .catch((error) => {
         console.log(error);
+        setIsErrorOccurred(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -55,13 +58,19 @@ const UsersPage: React.FC = () => {
 
       <div className="row">
         <h2>List Users</h2>
-        <div className="text-center">
-          <div className="spinner-border text-success" role="status"></div>
-          <p>Please wait while we load users</p>
-        </div>
-        <div className="alert alert-danger">
-          Some Error occurred! Try again later!
-        </div>
+
+        {isLoading && (
+          <div className="text-center">
+            <div className="spinner-border text-success" role="status"></div>
+            <p>Please wait while we load users</p>
+          </div>
+        )}
+
+        {isErrorOccured && (
+          <div className="alert alert-danger">
+            Some Error occurred! Try again later!
+          </div>
+        )}
 
         {users.map((user: IUser) => {
           return (

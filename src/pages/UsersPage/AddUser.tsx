@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { IUser } from "../../models/UserTypes";
 
 const AddUser: React.FC = () => {
+  const [isSaved, setIsSaved] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const { register, handleSubmit } = useForm<IUser>();
+
+  const handleAddUser = (formData: IUser) => {
+    console.log(formData);
+  };
+
   return (
     <div className="row">
       <h1>
@@ -11,7 +21,10 @@ const AddUser: React.FC = () => {
         Add User
       </h1>
 
-      <form className="col-md-6 offset-md-3">
+      <form
+        className="col-md-6 offset-md-3"
+        onSubmit={handleSubmit(handleAddUser)}
+      >
         <div className="form-group row mb-3">
           <label className="col-sm-2 col-form-label" htmlFor="nameInput">
             Name
@@ -19,7 +32,7 @@ const AddUser: React.FC = () => {
           <div className="col-sm-10">
             <input
               type="text"
-              id="nameInput"
+              {...register("name")}
               className="form-control"
               placeholder="Enter Name"
             />
@@ -32,7 +45,7 @@ const AddUser: React.FC = () => {
           <div className="col-sm-10">
             <input
               type="text"
-              id="phoneInput"
+              {...register("phone")}
               className="form-control"
               placeholder="Enter Phone"
             />
@@ -45,18 +58,22 @@ const AddUser: React.FC = () => {
           <div className="col-sm-10">
             <input
               type="email"
-              id="emailInput"
+              {...register("email")}
               className="form-control"
               placeholder="Enter Email"
             />
           </div>
         </div>
 
-        <div className="alert alert-success">Saved Successfully</div>
+        {isSaved && (
+          <div className="alert alert-success">Saved Successfully</div>
+        )}
 
-        <div className="alert alert-danger">
-          Some Error Occurred. Try again later!
-        </div>
+        {isError && (
+          <div className="alert alert-danger">
+            Some Error Occurred. Try again later!
+          </div>
+        )}
 
         <div className="form-group row">
           <div className="col-sm-10 offset-sm-2">
