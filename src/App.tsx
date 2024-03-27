@@ -13,21 +13,21 @@ import { HelmetProvider } from "react-helmet-async";
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-    <HelmetProvider>
-      <Header></Header>
+      <HelmetProvider>
+        <Header></Header>
 
-      <main className="container mt-5 pt-2">
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/netflix" element={<NetflixPage />}></Route>
-          <Route path="/users" element={<UsersPage />}></Route>
-          <Route path="/users/add" element={<AddUser />}></Route>
-          <Route path="/users/1" element={<UserDetails />}></Route>
-          <Route path="/about-us" element={<AboutPage />}></Route>
-        </Routes>
-      </main>
+        <main className="container mt-5 pt-2">
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/netflix" element={<NetflixPage />}></Route>
+            <Route path="/users" element={<UsersPage />}></Route>
+            <Route path="/users/add" element={<AddUser />}></Route>
+            <Route path="/users/1" element={<UserDetails />}></Route>
+            <Route path="/about-us" element={<AboutPage />}></Route>
+          </Routes>
+        </main>
 
-      <Footer />
+        <Footer />
       </HelmetProvider>
     </BrowserRouter>
   );

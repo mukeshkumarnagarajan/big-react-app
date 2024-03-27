@@ -1,4 +1,4 @@
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import LatestShow from "./LatestShow";
 import RecommendedShowList from "./RecommendedShowList";
 import Subcsription from "./Subcsription";
@@ -7,11 +7,9 @@ import TrendingShowList from "./TrendingShowList";
 const NetflixPage: React.FC = () => {
   return (
     <div>
-      <HelmetProvider>
         <Helmet>
           <title>Netflix</title>
         </Helmet>
-      </HelmetProvider>
       <h1>Welcome to Netflix App!</h1>
       <h2>Latest Shows | Props Demo</h2>
 

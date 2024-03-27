@@ -8,13 +8,13 @@ interface IShow {
   isInWatchlist: boolean;
 }
 
-interface IRecommendedshow {
+interface IRecommendedShowProps {
   show: IShow;
   index: number;
   handleManageWatchlist: Function;
 }
 
-const RecommendedShow: React.FC<IRecommendedshow> = ({
+const RecommendedShow: React.FC<IRecommendedShowProps> = ({
   show,
   index,
   handleManageWatchlist,
