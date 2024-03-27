@@ -1,8 +1,15 @@
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import homeLogo from "../../assets/images/logo-homepage.png";
 
 const HomePage: React.FC = () => {
   return (
     <div className="px-4 py-5 my-5 text-center">
+      <HelmetProvider>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
+      </HelmetProvider>
+
       <img
         src={homeLogo}
         alt="homepage-logo"

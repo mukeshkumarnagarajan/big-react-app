@@ -1,45 +1,56 @@
+import { NavLink } from "react-router-dom";
+
 const MenuList = () => {
+  const name = (navData: any) =>
+    navData.isActive ? "active nav-link" : "nav-link";
   return (
     <ul className="navbar-nav me-auto mb-2 mb-md-0">
       <li className="nav-item">
-        <a className="nav-link active" href="#">
+        <NavLink className={name} to="/">
           Home
-        </a>
+        </NavLink>
       </li>
+
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <NavLink className={name} to="/netflix">
           Netflix
-        </a>
+        </NavLink>
       </li>
+
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <NavLink className={name} to="/users">
           Manage Users
-        </a>
+        </NavLink>
       </li>
+
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <NavLink className={name} to="/todos">
           Todos
-        </a>
+        </NavLink>
       </li>
+
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <NavLink className={name} to="/products">
           Products
-        </a>
+        </NavLink>
       </li>
+
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <NavLink className={name} to="/about-us">
           About
-        </a>
+        </NavLink>
       </li>
+
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <NavLink className={name} to="contact-us">
           Contact Us
-        </a>
+        </NavLink>
       </li>
+
       <li className="nav-item">
-        <a className="nav-link" href="#">
+        <NavLink className={name} to="/login">
           Login
-        </a>
+        </NavLink>
       </li>
     </ul>
   );
