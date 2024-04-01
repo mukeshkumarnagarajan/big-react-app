@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import AddUser from "./pages/UsersPage/AddUser";
 import UserDetails from "./pages/UsersPage/UserDetails";
 import { HelmetProvider } from "react-helmet-async";
+import TodosPage from "./pages/TodosPage/TodosPage";
 
 const App: React.FC = () => {
   return (
@@ -22,7 +23,10 @@ const App: React.FC = () => {
             <Route path="/netflix" element={<NetflixPage />}></Route>
             <Route path="/users" element={<UsersPage />}></Route>
             <Route path="/users/add" element={<AddUser />}></Route>
-            <Route path="/users/1" element={<UserDetails />}></Route>
+            {/*  Setting up routing config with URL param */}
+            <Route path="/users/:userId" element={<UserDetails />}></Route>
+
+            <Route path="/todos" element={<TodosPage />}></Route>
             <Route path="/about-us" element={<AboutPage />}></Route>
           </Routes>
         </main>

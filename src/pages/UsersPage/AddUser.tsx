@@ -2,14 +2,32 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { IUser } from "../../models/UserTypes";
+import axios, { AxiosResponse } from "axios";
 
 const AddUser: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isError, setIsError] = useState(false);
   const { register, handleSubmit } = useForm<IUser>();
 
   const handleAddUser = (formData: IUser) => {
     console.log(formData);
+    setIsLoading(true);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", formData)
+      .then((res: AxiosResponse<IUser>) => {
+        console.log(res);
+        setIsSaved(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsError(true);
+      })
+      .finally(() => {
+        console.log("It's Over!");
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -78,7 +96,7 @@ const AddUser: React.FC = () => {
         <div className="form-group row">
           <div className="col-sm-10 offset-sm-2">
             <button type="submit" className="btn btn-primary">
-              Submit
+              {isLoading? 'Submitting...':'Submit'}
             </button>
           </div>
         </div>

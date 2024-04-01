@@ -1,7 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
- 
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { IUser } from "../../models/UserTypes";
+
 const UserDetails: React.FC = () => {
+  const [user, setUser] = useState<IUser>();
+
+  const { userId } = useParams();
+
+  const getUserDetails = async () => {
+    try {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+      );
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserDetails();
+  }, []);
+
   return (
     <>
       <h1>User Details</h1>
@@ -9,19 +30,21 @@ const UserDetails: React.FC = () => {
         Go Back
       </Link>
       <div className="card">
-        <div className="card-header">You are seeing details of User ID: 1</div>
+        <div className="card-header">
+          You are seeing details of User ID: {user?.id}
+        </div>
         <div className="card-body">
-          <h5 className="card-title">Name: John</h5>
-          <p className="card-text">E-Mail: j@k.com</p>
-          <p className="card-text">Phone: 435678945</p>
- 
+          <h5 className="card-title">Name: {user?.name}</h5>
+          <p className="card-text">E-Mail: {user?.email}</p>
+          <p className="card-text">Phone: {user?.phone}</p>
+
           <div>
             <Link to="edit" className="btn btn-primary">
               Edit
             </Link>
             <button
               type="button"
-              className="btn btn-outline-danger"
+              className="btn btn-outline-danger m-2"
               data-bs-toggle="modal"
               data-bs-target="#deleteUserModal"
             >
@@ -71,5 +94,5 @@ const UserDetails: React.FC = () => {
     </>
   );
 };
- 
+
 export default UserDetails;
