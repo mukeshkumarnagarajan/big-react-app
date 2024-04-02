@@ -48,7 +48,7 @@ const MenuList = () => {
       </li>
 
       <li className="nav-item">
-        <NavLink className={navLinkClass} to="/login">
+        <NavLink className={navLinkClass} to="/auth/login">
           Login
         </NavLink>
       </li>

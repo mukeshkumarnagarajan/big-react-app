@@ -8,7 +8,7 @@ const AddUser: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isError, setIsError] = useState(false);
-  const { register, handleSubmit } = useForm<IUser>();
+  const { register, handleSubmit, formState: {errors} } = useForm<IUser>();
 
   const handleAddUser = (formData: IUser) => {
     console.log(formData);
@@ -50,10 +50,11 @@ const AddUser: React.FC = () => {
           <div className="col-sm-10">
             <input
               type="text"
-              {...register("name")}
+              {...register("name",{required:true, maxLength:15})}
               className="form-control"
               placeholder="Enter Name"
             />
+            {errors.name && <p>Name is required and maxlength is 15 </p>}
           </div>
         </div>
         <div className="form-group row mb-3">
@@ -63,7 +64,7 @@ const AddUser: React.FC = () => {
           <div className="col-sm-10">
             <input
               type="text"
-              {...register("phone")}
+              {...register("phone",{required:true})}
               className="form-control"
               placeholder="Enter Phone"
             />
@@ -76,7 +77,7 @@ const AddUser: React.FC = () => {
           <div className="col-sm-10">
             <input
               type="email"
-              {...register("email")}
+              {...register("email",{required:true})}
               className="form-control"
               placeholder="Enter Email"
             />

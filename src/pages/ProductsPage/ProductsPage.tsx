@@ -20,6 +20,7 @@ const ProductsPage: React.FC = () => {
 
   useEffect(() => {
     getProductDetails();
+    return () => {};
   }, []);
 
   const handleAddToCart = (product: IProduct) => {

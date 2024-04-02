@@ -4,8 +4,7 @@ import { useCart } from "../contexts/CartContext";
 
 const Header: React.FC = () => {
 
-  const data = useCart();
-  console.log(data);
+  const addToCartContext = useCart();
 
   return (
     <header>
@@ -27,7 +26,7 @@ const Header: React.FC = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <MenuList />
-          <button className="btn btn-danger">Cart({data?.cartItems.length})</button>
+          <button className="btn btn-danger">Cart({addToCartContext?.cartItems.length})</button>
           </div>
         </div>
       </nav>
