@@ -15,15 +15,13 @@ const LoginPage: React.FC = () => {
   const authContext = useAuth();
 
   const handleLogin: SubmitHandler<IFormLogin> = async (formData) => {
-    console.log(formData);
-    // This data should be sent to REST API
 
     try {
       const response = await axios.post(
         "https://reqres.in/api/login",
         formData
       );
-      authContext?.saveToken(response.data.token);
+      authContext.saveToken(response.data.token);
       navigate("/netflix");
     } catch (error) {
       console.log(error);
