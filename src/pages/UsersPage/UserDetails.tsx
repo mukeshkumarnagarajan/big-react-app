@@ -21,7 +21,7 @@ const UserDetails: React.FC = () => {
 
   useEffect(() => {
     getUserDetails();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

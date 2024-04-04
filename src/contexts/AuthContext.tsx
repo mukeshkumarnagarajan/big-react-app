@@ -28,7 +28,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     return !!authToken;
   });
 
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState(' ');
   console.log(role); 
 
   // save JWT token

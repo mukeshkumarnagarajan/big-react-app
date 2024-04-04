@@ -1,0 +1,16 @@
+Build Checklist
+----
+
+0 console errors
+0 console warning
+
+Format properly
+0 Linting errors(npm run lint)
+
+Check all functionalities
+
+no console logs
+no debugger
+
+remove js based alerts
+

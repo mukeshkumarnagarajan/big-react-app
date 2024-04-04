@@ -1,8 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
+interface NavLinkData {
+  isActive: boolean;
+  // Add other properties if needed
+}
+
 const MenuList = () => {
-  const navLinkClass = (navData: any) =>
+  const navLinkClass = (navData: NavLinkData): string =>
     navData.isActive ? "active nav-link" : "nav-link";
 
   const { logout, isAuthenticated, role } = useAuth();
