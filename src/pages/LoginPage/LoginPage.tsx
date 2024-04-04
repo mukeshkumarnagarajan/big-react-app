@@ -21,7 +21,7 @@ const LoginPage: React.FC = () => {
         "https://reqres.in/api/login",
         formData
       );
-      authContext.saveToken(response.data.token);
+      authContext.saveToken(response.data.token, "SUPER_ADMIN");
       navigate("/netflix");
     } catch (error) {
       console.log(error);

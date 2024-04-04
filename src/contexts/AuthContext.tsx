@@ -12,9 +12,9 @@ import { ReactNode, createContext, useContext, useState } from "react";
 
 interface AuthContextProps {
   isAuthenticated: boolean; // Needed for the entire app. Particularly in ProtectedRoutes
-  saveToken: (token: string) => void; // Needed for LoginPage
-  logout?: () => void; // Needed for MenuList
-  // role: string | undefined; // Needed for Authorization
+  saveToken: (token: string, role: string) => void; // Needed for LoginPage
+  logout: () => void; // Needed for MenuList
+  role: string | undefined; // Needed for Authorization
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -28,18 +28,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     return !!authToken;
   });
 
+  const [role, setRole] = useState('');
+  console.log(role); 
+
   // save JWT token
-  const saveToken = (token: string) => {
+  const saveToken = (token: string, role: string) => {
     console.log("Saving Token through AuthProvider");
     localStorage.setItem("authToken", token);
     setIsAuthenticated(true);
+
+    localStorage.setItem("role", role);
+    setRole(role);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    setIsAuthenticated(false);
   };
 
   return (
     <AuthContext.Provider
       value={{
-        saveToken: saveToken,
-        isAuthenticated: isAuthenticated,
+        saveToken,
+        isAuthenticated,
+        logout,
+        role
       }}
     >
       {children}

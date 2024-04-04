@@ -1,12 +1,18 @@
 import { Helmet } from "react-helmet-async";
+import Localized from "./Localized";
 
 const AboutPage: React.FC = () => {
   return (
-    <div>
-        <Helmet>
-          <title>About US</title>
-        </Helmet>
-    </div>
+    <>
+      <Helmet>
+        <title>About US</title>
+      </Helmet>
+
+      <div>
+        <h1>Demo of i18n and l10n</h1>
+        <Localized />
+      </div>
+    </>
   );
 };
 
