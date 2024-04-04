@@ -11,7 +11,7 @@ interface IShow {
 interface IRecommendedShowProps {
   show: IShow;
   index: number;
-  handleManageWatchlist: () => void;
+  handleManageWatchlist: Function;
 }
 
 const RecommendedShow: React.FC<IRecommendedShowProps> = ({

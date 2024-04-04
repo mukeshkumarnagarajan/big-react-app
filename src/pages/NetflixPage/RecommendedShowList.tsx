@@ -64,7 +64,7 @@ const RecommendedShowList: React.FC = () => {
     );
   }
 
-  const handleManageWatchlist = (index: number) => {
+  const handleManageWatchlist: Function = (index: number) => {
     const duplicateShows = [...shows];
     duplicateShows[index].isInWatchlist = !duplicateShows[index].isInWatchlist;
     setShows(duplicateShows);
