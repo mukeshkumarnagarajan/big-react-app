@@ -12,6 +12,7 @@ interface IShow {
 }
 
 const RecommendedShowList: React.FC = () => {
+  console.log("Rec")
   const [shows, setShows] = useState<IShow[]>([
     {
       id: 66456364,

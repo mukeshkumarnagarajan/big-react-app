@@ -3,14 +3,31 @@ import LatestShow from "./LatestShow";
 import RecommendedShowList from "./RecommendedShowList";
 import Subcsription from "./Subcsription";
 import TrendingShowList from "./TrendingShowList";
+import { useCallback, useState, useRef } from "react";
 
 const NetflixPage: React.FC = () => {
+  const [buttonValue, setButtonValue] = useState(0);
+
+  let abc = useRef<number>(0);
+  console.log(abc.current);
+
+  const handleButton = () => {
+    abc.current = ++abc.current;
+    console.log(abc.current);
+    setButtonValue((prevState) => prevState + 1);
+  };
+
+  const fun = useCallback(() => {
+    console.log("fun");
+  }, []);
+
   return (
     <div>
-        <Helmet>
-          <title>Netflix</title>
-        </Helmet>
+      <Helmet>
+        <title>Netflix</title>
+      </Helmet>
       <h1>Welcome to Netflix App!</h1>
+      <button onClick={handleButton}>count: {buttonValue}</button>
       <h2>Latest Shows | Props Demo</h2>
 
       <div className="row">
@@ -69,7 +86,7 @@ const NetflixPage: React.FC = () => {
 
       <hr />
       <h2>Subscription | Styling Demo</h2>
-      <Subcsription/>
+      <Subcsription fun={fun} />
     </div>
   );
 };

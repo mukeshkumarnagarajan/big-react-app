@@ -10,6 +10,7 @@
 */
 
 import "./Subscription.css";
+import { MouseEventHandler, memo } from "react";
 
 const subscriptionStyles = {
   renewStyles: {
@@ -27,7 +28,10 @@ const subscriptionStyles = {
   },
 };
 
-const Subcsription: React.FC = () => {
+
+
+const Subcsription: React.FC<{fun: MouseEventHandler<HTMLButtonElement>}>= memo(({fun}) => {
+  console.log("sub");
   return (
     <div className="text-center">
       <h3 className="subscription-info">
@@ -50,9 +54,9 @@ const Subcsription: React.FC = () => {
         Renew Now to get 50% discount. Use Coupon Code: OFFER50 during checkout
       </h4>
 
-      <button style={subscriptionStyles.renewButtonStyles}>RENEW</button>
+      <button style={subscriptionStyles.renewButtonStyles} onClick={fun}>RENEW</button>
     </div>
   );
-};
+});
 
 export default Subcsription;

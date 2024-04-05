@@ -25,4 +25,14 @@ export default {
       statements: 80,
     },
   },
+
+  reporters: [
+    "default",
+    [
+      "./node_modules/jest-html-reporter",
+      {
+        pageTitle: "Test Report",
+      },
+    ],
+  ],
 };
