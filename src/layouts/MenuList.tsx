@@ -31,6 +31,12 @@ const MenuList = () => {
         </NavLink>
       </li>
 
+      <li className="nav-item">
+        <NavLink className={navLinkClass} to="unit-testing-demo">
+          unit-testing-demo
+        </NavLink>
+      </li>
+
       {!isAuthenticated ? (
         <li className="nav-item">
           <NavLink className={navLinkClass} to="/auth/login">
