@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface SocialMediaProps {
   name: string;
@@ -16,7 +16,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ name, followersCount }) => {
       </h3>
 
       <p>Top Social Media Platform of Genesys</p>
-      <p data-testid="followersDetails">
+      <p data-testid="followersDetails" style={{backgroundColor: '#ffff00'}}>
         {name} with {followersCount} followers
       </p>
 
@@ -24,11 +24,11 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ name, followersCount }) => {
         type="text"
         placeholder="Enter Country Name"
         value={countryName}
-        onChange={(event) => {
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setCountryName(event.target.value);
         }}
       />
-      <p>Visit Genesys {countryName} Website</p>
+      <p data-testid="webSiteInfo">Visit Genesys {countryName} Website</p>
     </>
   );
 };
